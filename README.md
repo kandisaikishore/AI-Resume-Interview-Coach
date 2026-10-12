@@ -1,5 +1,10 @@
 # AI Resume & Interview Coach
 
+## Live Demo / Deployment URL
+
+**Deployment URL:** Not verified yet. Add the confirmed public application URL here after checking the live service. The GitHub repository link is not a deployment URL.
+
+
 [![Repository](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/saikishore2410/AI-Resume-Interview-Coach) [![Issues](https://img.shields.io/github/issues/saikishore2410/AI-Resume-Interview-Coach)](https://github.com/saikishore2410/AI-Resume-Interview-Coach/issues) [![Last Commit](https://img.shields.io/github/last-commit/saikishore2410/AI-Resume-Interview-Coach)](https://github.com/saikishore2410/AI-Resume-Interview-Coach/commits/main)
 
 > This repository contains the application source and local development setup. This README is intended to help developers and reviewers understand the project, run it locally, and assess its current scope without overstating unverified capabilities.
