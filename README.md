@@ -1,52 +1,43 @@
 # AI Resume & Interview Coach
 
-## Live Demo / Deployment URL
+[![Source](https://img.shields.io/badge/Source-GitHub-181717?logo=github)](https://github.com/kandisaikishore/AI-Resume-Interview-Coach) [![Last Commit](https://img.shields.io/github/last-commit/kandisaikishore/AI-Resume-Interview-Coach)](https://github.com/kandisaikishore/AI-Resume-Interview-Coach/commits/main)
 
-**Deployment URL:** Not verified yet. Add the confirmed public application URL here after checking the live service. The GitHub repository link is not a deployment URL.
+An AI Studio application starter focused on career preparation, resume assistance, and interview practice. The project uses a Node.js/npm development workflow and can connect to Gemini-backed functionality where that integration is configured in the source.
 
+## Project goals
 
-[![Repository](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)](https://github.com/saikishore2410/AI-Resume-Interview-Coach) [![Issues](https://img.shields.io/github/issues/saikishore2410/AI-Resume-Interview-Coach)](https://github.com/saikishore2410/AI-Resume-Interview-Coach/issues) [![Last Commit](https://img.shields.io/github/last-commit/saikishore2410/AI-Resume-Interview-Coach)](https://github.com/saikishore2410/AI-Resume-Interview-Coach/commits/main)
+- Support career-preparation workflows through an application interface
+- Provide a base for resume and interview-practice features
+- Keep AI integration configurable rather than embedding credentials
+- Make local setup and validation repeatable for contributors
 
-> This repository contains the application source and local development setup. This README is intended to help developers and reviewers understand the project, run it locally, and assess its current scope without overstating unverified capabilities.
-
-## At a glance
-
-- **Purpose:** Understand the problem and supported workflows from the feature and scope sections below.
-- **Setup:** Follow the project-specific steps in **Getting started** or **Run locally**; verify commands against the current source and package scripts.
-- **Configuration:** Keep API keys, database passwords, tokens, and user data out of commits. Use local environment variables for secrets.
-- **Quality:** Run the available build, tests, and lint checks before proposing changes.
-
-
-
-**An AI Studio application starter for career preparation, resume support, and interview practice. Use the app source to confirm the exact available workflows.**
-
-## Overview
-
-This repository contains the application source and local development setup. This README is intended to help developers and reviewers understand the project, run it locally, and assess its current scope without overstating unverified capabilities.
-
-## Highlights
-
-- Career-preparation interface (confirm exact workflow in the app)
-- Local development with npm
-- Gemini-backed functionality when configured in source and environment
+Review the application source to confirm which resume-review, interview, and AI features are currently implemented.
 
 ## Technology
 
-Node.js · npm · Gemini API (for configured features)
+- Node.js
+- npm
+- Gemini API for configured AI-powered functionality
 
-## Quick start
+## Prerequisites
 
-Prerequisite: a compatible Node.js installation. From a terminal:
+Install a compatible Node.js version and npm. Obtain an API key only if the current source requires Gemini integration.
+
+## Run locally
 
 ```bash
- git clone https://github.com/saikishore2410/AI-Resume-Interview-Coach.git
- cd AI-Resume-Interview-Coach
- npm install
-# Add GEMINI_API_KEY to .env.local
-npm run dev
+git clone https://github.com/kandisaikishore/AI-Resume-Interview-Coach.git
+cd AI-Resume-Interview-Coach
+npm install
 ```
 
-Configure environment variables locally before launching the app. Use the variable names expected by the current source code, and keep real credentials out of version control.
+Create a local `.env.local` file and add the environment variable expected by the source (for example, `GEMINI_API_KEY` if the implementation reads that name). Never commit API keys or other secrets.
+
+Start the development server using the scripts available in `package.json`:
+
+```bash
+npm run dev
+```
 
 ## Build and validation
 
@@ -54,16 +45,16 @@ Configure environment variables locally before launching the app. Use the variab
 npm run build
 ```
 
-Run any test or lint scripts defined in `package.json`. Review the source and deployment configuration before treating the application as production-ready.
+Run any test and lint scripts defined by the project. Verify behaviour with missing or invalid configuration, and ensure errors from the AI service are communicated clearly.
 
-## Configuration and limitations
+## Responsible use
 
-Do not commit API keys. This README avoids implying that unverified features or evaluations are production-ready.
+AI-generated suggestions may be incomplete or inaccurate. Users should review resume content and interview feedback before relying on it. Do not upload sensitive personal information unless the application’s privacy and data-handling practices are understood.
 
 ## Contributing
 
-Issues and focused pull requests are welcome. Include reproduction steps for bugs and describe the validation performed for changes.
+Open issues with reproduction steps. Pull requests should describe the change and include build, test, or manual validation results.
 
 ## License
 
-No license is specified. Add a `LICENSE` file to define permitted reuse.
+No license file is currently declared. Add a `LICENSE` file to define reuse terms.
