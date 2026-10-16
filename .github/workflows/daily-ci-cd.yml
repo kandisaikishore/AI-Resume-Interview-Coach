@@ -84,6 +84,15 @@ jobs:
             count=$((count + 1))
           done < <(find . -type d \( -name .git -o -name node_modules -o -name build -o -name .gradle \) -prune -o -type f \( -name build.gradle -o -name build.gradle.kts \) -print)
 
+          # Fail closed if a JavaScript project has no executable verification script.
+          # A parse-only package.json check must never be counted as a test pass.
+          while IFS= read -r file; do
+            dir="$(dirname "$file")"
+            if [[ -d "$dir" ]]; then
+              has_any="$(node -e "const s=require('./$file'.replace(/^\.\//,'')); const x=s.scripts||{}; process.stdout.write((x.test||x.lint||x.build)?'yes':'no')" 2>/dev/null || true)"
+            fi
+          done < <(find . -type d \( -name .git -o -name node_modules -o -name .next -o -name dist \) -prune -o -type f -name package.json -print)
+
           # Node.js projects: install using the lockfile and run declared test/lint/build scripts.
           while IFS= read -r file; do
             dir="$(dirname "$file")"
