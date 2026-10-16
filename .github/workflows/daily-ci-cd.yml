@@ -84,15 +84,6 @@ jobs:
             count=$((count + 1))
           done < <(find . -type d \( -name .git -o -name node_modules -o -name build -o -name .gradle \) -prune -o -type f \( -name build.gradle -o -name build.gradle.kts \) -print)
 
-          # Fail closed if a JavaScript project has no executable verification script.
-          # A parse-only package.json check must never be counted as a test pass.
-          while IFS= read -r file; do
-            dir="$(dirname "$file")"
-            if [[ -d "$dir" ]]; then
-              has_any="$(node -e "const s=require('./$file'.replace(/^\.\//,'')); const x=s.scripts||{}; process.stdout.write((x.test||x.lint||x.build)?'yes':'no')" 2>/dev/null || true)"
-            fi
-          done < <(find . -type d \( -name .git -o -name node_modules -o -name .next -o -name dist \) -prune -o -type f -name package.json -print)
-
           # Node.js projects: install using the lockfile and run declared test/lint/build scripts.
           while IFS= read -r file; do
             dir="$(dirname "$file")"
@@ -122,8 +113,8 @@ jobs:
               if [[ "$has_lint" == yes ]]; then "$PM" run lint; ran=1; fi
               if [[ "$has_build" == yes ]]; then "$PM" run build; ran=1; fi
               if [[ "$ran" == 0 ]]; then
-                node -e "JSON.parse(require('fs').readFileSync('package.json','utf8'))"
-                echo "No test/lint/build script declared; package.json syntax check passed."
+                echo "FAIL: $dir declares no test, lint, or build script; refusing to count manifest parsing as validation." >&2
+                exit 1
               fi
             )
             echo "- Node.js checks: $dir — PASS" >> reports/check-summary.txt
